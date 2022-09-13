@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package game_catalog;
+
+service GameCatalogService {
+  rpc Connect(Request) returns (Reply);
+  rpc GetGameByName(Request) returns (Reply);
+  rpc GetPriceByName(Request) returns (Reply);
+  rpc AddGame(Request) returns (Reply);
+  rpc RemoveGame(Request) returns (Reply);
+  rpc RemoveAll(Request) returns (Reply);
+}
+
+message Game {
+	int32 price = 1;
+	string name = 2;
+}
+
+message Request {
+	GetGamesRequest getGames = 1;
+	GetGameRequest getGame = 2;
+	GetPriceRequest getPrice = 3;
+	AddGameRequest addGame = 4;
+	RemoveGameRequest remGame = 5;
+	RemoveAllRequest reGames = 6;
+}
+
+message GetGamesRequest {
+}
+
+message GetGameRequest{
+	string name = 1;
+}
+
+message GetPriceRequest {
+	string name = 1;
+}
+
+message AddGameRequest {
+	Game game = 1;
+}
+
+message RemoveGameRequest{
+	string name = 1;
+}
+
+message RemoveAllRequest{
+}
+
+message Reply {
+	oneof replay {
+		GamesReplay games = 1;
+		GameReplay game = 2;
+		PriceReplay price = 3;
+		AddResultReplay addResult = 4;
+		RemoveResultReply remResult = 5;
+		RemoveAllResultReply remAllResult = 6;
+	}
+}
+
+message GamesReplay {
+	repeated Game games = 1;
+}
+
+message GameReplay{
+	Game game = 1;
+}
+
+message PriceReplay {
+	int32 price = 1;
+}
+
+message AddResultReplay {
+	bool result = 1;
+}
+
+message RemoveResultReply{
+	bool result = 1;
+}
+
+message RemoveAllResultReply{
+	bool result = 1;
+}
