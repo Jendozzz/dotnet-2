@@ -1,4 +1,5 @@
 ﻿using GameCatalog;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -42,7 +43,21 @@ namespace GameCatalogServer.Repositories
                 _semaphore.Release();
             }
         }
-        
+
+        public async Task<Game?> GetGameByName(string name)
+        {
+            await _semaphore.WaitAsync();
+            try
+            {
+                var games = await ReadFile();
+                return games.FirstOrDefault(x => x.Name == name);
+            }
+            finally
+            {
+                _semaphore.Release();
+            }
+        }
+
         public async Task<int> GetPriceByName(string name)
         {
             await _semaphore.WaitAsync();
@@ -75,7 +90,17 @@ namespace GameCatalogServer.Repositories
             }
         }
 
-        private static async Task<List<Game>> ReadFile()
+        public async Task<bool> CheckGame(Game game)
+        {
+            await _semaphore.WaitAsync();
+            if (GetGameByName(game.Name) != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<List<Game>> ReadFile()
         {
             if (!File.Exists(_filePath))
                 File.Create(_filePath).Close();
@@ -86,7 +111,7 @@ namespace GameCatalogServer.Repositories
             return games;
         }
 
-        private static async void WriteFile(List<Game> games)
+        public async void WriteFile(List<Game> games)
         {
             using FileStream createStream = File.Create(_filePath);
             await JsonSerializer.SerializeAsync(createStream, games);

@@ -14,6 +14,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameCatalogClient", "GameCa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProtoLib", "ProtoLib\ProtoLib.csproj", "{50CC5F25-EA21-49BC-A8DF-B63A2F19FB2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameCatalogTests", "GameCatalogTests\GameCatalogTests.csproj", "{78B7058E-F9DA-4E08-AC24-735506E23283}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{50CC5F25-EA21-49BC-A8DF-B63A2F19FB2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50CC5F25-EA21-49BC-A8DF-B63A2F19FB2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50CC5F25-EA21-49BC-A8DF-B63A2F19FB2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78B7058E-F9DA-4E08-AC24-735506E23283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78B7058E-F9DA-4E08-AC24-735506E23283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78B7058E-F9DA-4E08-AC24-735506E23283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78B7058E-F9DA-4E08-AC24-735506E23283}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
