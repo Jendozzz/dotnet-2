@@ -1,21 +1,5 @@
-﻿
-
-using Grpc.Net.Client;
-using Google.Protobuf.WellKnownTypes;
-
-
-using System.Collections.ObjectModel;
-using System.Windows;
-using System.Windows.Controls;
-
-
-
-using System;
+﻿using Grpc.Net.Client;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Channels;
 using System.Threading.Tasks;
 using GameCatalog;
 
@@ -28,13 +12,12 @@ namespace GameCatalogClient
 
         public Client()
         {
-            
             var _channel = GrpcChannel.ForAddress(_address);
-
              _client = new GameCatalogService.GameCatalogServiceClient(_channel);
         }
 
-        public async Task<IEnumerable<Game>> GetGames() {
+        public async Task<IEnumerable<Game>> GetGames() 
+        {
             var gamesRequest = new GetGamesRequest();
             var reply = _client.Connect(new Request { GetGames = gamesRequest });
             return reply.Games.Games;

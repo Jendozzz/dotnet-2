@@ -1,18 +1,11 @@
 ﻿using GameCatalog;
 using GameCatalogClient.Commands;
 using GameCatalogClient.Views;
-using Grpc.Core;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
-using System.Reactive;
-using System.Reactive.Disposables;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace GameCatalogClient.ViewModels
@@ -61,7 +54,6 @@ namespace GameCatalogClient.ViewModels
                 UpdateGames();
             }, null);
         }
-
 
         public async Task UpdateGames()
         {

@@ -42,7 +42,6 @@ namespace GameCatalogServer.Repositories
                 _semaphore.Release();
             }
         }
-
         
         public async Task<int> GetPriceByName(string name)
         {
