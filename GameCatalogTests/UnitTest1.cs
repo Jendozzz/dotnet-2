@@ -9,17 +9,6 @@ namespace GameCatalogTests
 {
     public class UnitTests
     {
-        /*private static GamesRepository CreateTestRepository()
-        {
-            Game game1 = new Game();
-            game1.Name = "PUBG";
-            game1.Price = 1337;
-            var testGamesRepository = new GamesRepository();
-            testGamesRepository.AddGame(game1);
-            testGamesRepository.
-            return testGamesRepository;
-        }*/
-
         private static Game CreateTestGame()
         {
             Game game = new Game();
@@ -58,7 +47,7 @@ namespace GameCatalogTests
             var gamesRepositoryTest = new GamesRepository();
             var game = CreateTestGame();
             await gamesRepositoryTest.AddGame(game);
-            Assert.True(await gamesRepositoryTest.CheckGame(game));
+            Assert.True(await gamesRepositoryTest.CheckGame(game.Name));
         }
 
         [Fact]
@@ -68,7 +57,7 @@ namespace GameCatalogTests
             var game = CreateTestGame();
             await gamesRepositoryTest.AddGame(game);
             await gamesRepositoryTest.RemoveGame(game);
-            Assert.True(!(await gamesRepositoryTest.CheckGame(game)));
+            Assert.True(await gamesRepositoryTest.CheckGame(game.Name));
         }
 
         [Fact]
@@ -78,7 +67,7 @@ namespace GameCatalogTests
             var game = CreateTestGame();
             await gamesRepositoryTest.AddGame(game);
             await gamesRepositoryTest.GetAll();
-            Assert.True(await gamesRepositoryTest.CheckGame(game));
+            Assert.True(await gamesRepositoryTest.CheckGame(game.Name));
         }
 
         [Fact]
@@ -88,7 +77,7 @@ namespace GameCatalogTests
             var game = CreateTestGame();
             await gamesRepositoryTest.AddGame(game);
             var result = await gamesRepositoryTest.GetGameByName(game.Name);
-            Assert.True(result == game);
+            Assert.True(result.Name == game.Name && result.Price == game.Price);
         }
 
         [Fact]

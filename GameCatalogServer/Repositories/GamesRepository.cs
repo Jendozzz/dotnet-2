@@ -90,10 +90,10 @@ namespace GameCatalogServer.Repositories
             }
         }
 
-        public async Task<bool> CheckGame(Game game)
+        public async Task<bool> CheckGame(string game)
         {
             await _semaphore.WaitAsync();
-            if (GetGameByName(game.Name) != null)
+            if (GetGameByName(game) != null)
             {
                 return true;
             }
