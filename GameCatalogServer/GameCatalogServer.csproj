@@ -13,6 +13,4 @@
         <PackageReference Include="Grpc.AspNetCore" Version="2.34.0" />
     </ItemGroup>
 
-    <ProjectExtensions><VisualStudio><UserProperties database_1json__JsonSchema="https://github.com/go-vela/types/releases/latest/download/schema.json" /></VisualStudio></ProjectExtensions>
-
 </Project>

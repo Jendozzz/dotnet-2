@@ -16,7 +16,6 @@ message Request {
 		GetGamesRequest getGames = 1;
 		GetPriceRequest getPrice = 2;
 		AddGameRequest addGame = 3;
-		DeleteGameRequest deleteGame = 4;
 	}
 }
 
@@ -28,10 +27,6 @@ message GetPriceRequest {
 }
 
 message AddGameRequest {
-	Game game = 1;
-}
-
-message DeleteGameRequest {
 	Game game = 1;
 }
 

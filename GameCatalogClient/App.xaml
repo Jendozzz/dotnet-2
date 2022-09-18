@@ -3,5 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Application.Resources>
         <BitmapImage UriSource="Assets/AppIcon.png" x:Key="AppIcon" />
+        <BitmapImage UriSource="Assets/PlusIcon.png" x:Key="PlusIcon" />
     </Application.Resources>
 </Application>

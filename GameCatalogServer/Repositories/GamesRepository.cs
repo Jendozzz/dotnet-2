@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Numerics;
-using System.Security.Policy;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,47 +12,6 @@ namespace GameCatalogServer.Repositories
     {
         private const string _filePath = "database.json";
         private readonly SemaphoreSlim _semaphore = new(1, 1);
-
-        public async Task<List<Game>> GetAll()
-        {
-            await _semaphore.WaitAsync();
-            try
-            {
-                return await ReadFile();
-            }
-            finally
-            {
-                _semaphore.Release();
-            }
-        }
-
-        public async Task<Game?> GetGameByName(string name)
-        {
-            await _semaphore.WaitAsync();
-            try
-            {
-                var games = await ReadFile();
-                return games.FirstOrDefault(x => x.Name == name);
-            }
-            finally
-            {
-                _semaphore.Release();
-            }
-        }
-
-        public async Task<int> GetPriceByName(string name)
-        {
-            await _semaphore.WaitAsync();
-            try
-            {
-                var games = await ReadFile();
-                return games.First(x => x.Name == name).Price;
-            }
-            finally
-            {
-                _semaphore.Release();
-            }
-        }
 
         public async Task AddGame(Game game)
         {
@@ -73,17 +30,12 @@ namespace GameCatalogServer.Repositories
             }
         }
 
-        public async Task RemoveGame(string gameName)
+        public async Task<List<Game>> GetAll()
         {
             await _semaphore.WaitAsync();
             try
             {
-                var games = await ReadFile();
-                var game = games.FirstOrDefault(x => x.Name == gameName);
-                if (game is null)
-                    return;
-                games.Remove(game);
-                WriteFile(games);
+                return await ReadFile();
             }
             finally
             {
@@ -91,13 +43,31 @@ namespace GameCatalogServer.Repositories
             }
         }
 
-        public async Task RemoveAll()
+        
+        public async Task<int> GetPriceByName(string name)
         {
             await _semaphore.WaitAsync();
             try
             {
-                var games = await ReadFile(); 
-                games.Clear();
+                var games = await ReadFile();
+                return games.First(x => x.Name == name).Price;
+            }
+            finally
+            {
+                _semaphore.Release();
+            }
+        }
+
+        public async Task RemoveGame(Game game)
+        {
+            await _semaphore.WaitAsync();
+            try
+            {
+                var games = await ReadFile();
+                var findedGame = games.Find( g => g.Name == game.Name && g.Price == g.Price);
+                if (findedGame is null)
+                    return;
+                games.Remove(findedGame);
                 WriteFile(games);
             }
             finally

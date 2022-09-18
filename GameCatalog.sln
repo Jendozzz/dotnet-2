@@ -10,9 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Protos", "Protos", "{80F8D7
 		Protos\game_catalog.proto = Protos\game_catalog.proto
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameCatalogClient", "GameCatalogClient\GameCatalogClient.csproj", "{034241A5-0931-421D-B9C9-B157CA4368F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameCatalogClient", "GameCatalogClient\GameCatalogClient.csproj", "{034241A5-0931-421D-B9C9-B157CA4368F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtoLib", "ProtoLib\ProtoLib.csproj", "{50CC5F25-EA21-49BC-A8DF-B63A2F19FB2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProtoLib", "ProtoLib\ProtoLib.csproj", "{50CC5F25-EA21-49BC-A8DF-B63A2F19FB2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
